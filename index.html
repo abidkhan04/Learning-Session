@@ -6,10 +6,52 @@
     <title>Learning Session</title>
   </head>
   <body>
-    <h1>Welcome To Code Here</h1>
+    <style>
+      body {
+        background-color: #191d24;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
 
-    <form type=" search" id="d"></form>
+      .container {
+        width: 400px;
+        height: 400px;
+        background-color: #191d24;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
 
-    <script src="index.js"></script>
+      .container:hover {
+        background-color: white;
+        transition: 4.5s;
+        transition-duration: 2s;
+      }
+
+      .clock {
+        width: 200%;
+        height: 200%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #15d2df;
+        font-size: 100px;
+        font-family: "Arial", sans-serif;
+        letter-spacing: 2px;
+        text-shadow: 0 0 10px rgba(0, 240, 255, 0.8);
+        transition: all 0.5s cubic-bezier(0.6, 0.2, 0.1, 2);
+      }
+    </style>
+
+    <div class="container">
+      <div class="clock">
+        <div id="time" class="time"></div>
+      </div>
+    </div>
   </body>
+  <script src="index.js"></script>
 </html>

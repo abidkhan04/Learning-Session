@@ -21,21 +21,44 @@
 
 //TimeStamps Comparison
 
-const before = new Date("January 15 2019 12:40:30");
-const now = new Date();
-// console.log(now1.getTime(), before.getTime());
+// const before = new Date("January 15 2019 12:40:30");
+// const now = new Date();
+// // console.log(now1.getTime(), before.getTime());
 
-const diff = now.getTime() - before.getTime();
-console.log(diff);
+// const diff = now.getTime() - before.getTime();
+// console.log(diff);
 
-const Minutes = Math.round(diff / 1000 / 60);
-const Hours = Math.round(Minutes / 60);
-const days = Math.round(Hours / 24);
+// const Minutes = Math.round(diff / 1000 / 60);
+// const Hours = Math.round(Minutes / 60);
+// const days = Math.round(Hours / 24);
 
-console.log(Minutes, Hours, days);
-console.log(`The BLOG was written ${days} Days ago `);
+// console.log(Minutes, Hours, days);
+// console.log(`The BLOG was written ${days} Days ago `);
 
-// //Converting a timestamp into a Date object
+// // //Converting a timestamp into a Date object
 
-const timestamp = now.getTime();
-console.log(new Date(timestamp));
+// const timestamp = now.getTime();
+// console.log(new Date(timestamp));
+
+// Designing a digital clock
+
+const clock = document.querySelector(".clock");
+
+const tick = () => {
+  const nowtime = new Date();
+
+  const h = nowtime.getHours();
+  const m = nowtime.getMinutes();
+  const s = nowtime.getSeconds();
+
+  const html = `
+  <span>${h}</span> :
+  <span>${m}</span> :
+  <span>${s}</span>
+  
+  `;
+
+  clock.innerHTML = html;
+};
+
+setInterval(tick, 1000);
