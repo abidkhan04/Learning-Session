@@ -51,10 +51,25 @@ const tick = () => {
   const m = nowtime.getMinutes();
   const s = nowtime.getSeconds();
 
+  const M = nowtime.getMonth() + 1;
+  const D = nowtime.getDate();
+  const Y = nowtime.getFullYear();
+
   const html = `
+  
+  
+  <div class= "conatiner1">
+  <div class="time">
   <span>${h}</span> :
   <span>${m}</span> :
   <span>${s}</span>
+  
+  </div>
+  <div class = "calendar">
+  <span>${M}</span> /
+  <span>${D}</span> /
+  <span>${Y}</span>
+  </div>
   
   `;
 

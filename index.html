@@ -3,33 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Learning Session</title>
+    <title>Digital Clock with Date</title>
   </head>
   <body>
     <style>
       body {
         background-color: #191d24;
         display: flex;
+        box-sizing: border-box;
         justify-content: center;
         align-items: center;
         height: 100vh;
         margin: 0;
       }
 
-      .container {
-        width: 400px;
-        height: 400px;
+      .container:hover {
+        width: 280px;
+        height: 280px;
+        font-size: 20px;
         background-color: #191d24;
-        border-radius: 10px;
         display: flex;
+        border-radius: 145px;
+        background-color: rgb(164, 160, 160);
+        transition: background-color 2s;
+        box-shadow: 0 0 10px rgba(252, 252, 252, 0.2);
+        box-sizing: border-box;
         justify-content: center;
         align-items: center;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        transition: background-color 2s;
-      }
-
-      .container:hover {
-        background-color: white;
       }
 
       .clock {
@@ -38,19 +38,28 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        color: #15d2df;
-        font-size: 100px;
+        color: #09d8e7;
+        font-size: 50px;
         font-family: "Arial", sans-serif;
         letter-spacing: 2px;
-        text-shadow: 0 0 10px rgba(0, 240, 255, 0.8);
+        text-shadow: 0 0 10px rgba(26, 36, 37, 0.8);
         transition: all 0.5s cubic-bezier(0.6, 0.2, 0.1, 2);
+      }
+
+      .time div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .calendar div {
+        margin: 0 5px;
+        justify-content: center;
+        align-items: center;
       }
     </style>
 
     <div class="container">
-      <div class="clock">
-        <div id="time" class="time"></div>
-      </div>
+      <div class="clock"></div>
     </div>
   </body>
   <script src="index.js"></script>
