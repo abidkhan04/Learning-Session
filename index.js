@@ -1,79 +1,44 @@
-// //Date and Time
+// console.log(1);
+// console.log(2);
 
-// const now = new Date();
+// setTimeout(() => {
+//   console.log("call Back Function Fired");
+// }, 3000);
 
-// console.log(now);
-// console.log(typeof now);
+// console.log(3);
+// console.log(4);
 
-// console.log("getFullYear:", now.getFullYear());
-// console.log("getMonth:", now.getMonth());
-// console.log("getDate:", now.getDate());
-// console.log("getDay:", now.getDay());
-// console.log("getHours:", now.getHours());
-// console.log("getMinutes:", now.getMinutes());
-// console.log("getSeconds:", now.getSeconds());
+const getTodos = (callback) => {
+  const request = new XMLHttpRequest();
 
-// console.log("getTimeStamp:", now.getTime());
+  request.addEventListener("readystatechange", () => {
+    console.log(request, request.readyState);
 
-// console.log(now.toDateString());
-// console.log(now.toTimeString());
-// console.log(now.toLocaleString());
+    if (request.readyState === 4 && request.status === 200) {
+      callback(undefined, request.readyState === 4);
+      //   console.log(request, request.responseText);
+    } else if (request.readyState === 4) {
+      callback("couldnt fetch data", undefined);
+      //   console.log("Could not fetch the data");
+    }
+  });
 
-//TimeStamps Comparison
-
-// const before = new Date("January 15 2019 12:40:30");
-// const now = new Date();
-// // console.log(now1.getTime(), before.getTime());
-
-// const diff = now.getTime() - before.getTime();
-// console.log(diff);
-
-// const Minutes = Math.round(diff / 1000 / 60);
-// const Hours = Math.round(Minutes / 60);
-// const days = Math.round(Hours / 24);
-
-// console.log(Minutes, Hours, days);
-// console.log(`The BLOG was written ${days} Days ago `);
-
-// // //Converting a timestamp into a Date object
-
-// const timestamp = now.getTime();
-// console.log(new Date(timestamp));
-
-// Designing a digital clock
-
-const clock = document.querySelector(".clock");
-
-const tick = () => {
-  const nowtime = new Date();
-
-  const h = nowtime.getHours();
-  const m = nowtime.getMinutes();
-  const s = nowtime.getSeconds();
-
-  const M = nowtime.getMonth() + 1;
-  const D = nowtime.getDate();
-  const Y = nowtime.getFullYear();
-
-  const html = `
-  
-  
-  <div class= "conatiner1">
-  <div class="time">
-  <span>${h}</span> :
-  <span>${m}</span> :
-  <span>${s}</span>
-  
-  </div>
-  <div class = "calendar">
-  <span>${M}</span> /
-  <span>${D}</span> /
-  <span>${Y}</span>
-  </div>
-  
-  `;
-
-  clock.innerHTML = html;
+  request.open("GET", "https://jsonplaceholder.typicode.com/todos/");
+  request.send();
 };
 
-setInterval(tick, 1000);
+console.log(1);
+console.log(2);
+
+getTodos((err, data) => {
+  console.log("Callback fired");
+  //   console.log(err, data);
+  if (err) {
+    console.log(err);
+  } else {
+    console.log(data);
+  }
+});
+
+console.log(3);
+console.log(4);
