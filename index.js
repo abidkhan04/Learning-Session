@@ -8,37 +8,116 @@
 // console.log(3);
 // console.log(4);
 
-const getTodos = (callback) => {
-  const request = new XMLHttpRequest();
+// 2nd Method Of Creating a request
 
-  request.addEventListener("readystatechange", () => {
-    console.log(request, request.readyState);
+// const demo = new XMLHttpRequest();
 
-    if (request.readyState === 4 && request.status === 200) {
-      callback(undefined, request.readyState === 4);
-      //   console.log(request, request.responseText);
-    } else if (request.readyState === 4) {
-      callback("couldnt fetch data", undefined);
-      //   console.log("Could not fetch the data");
-    }
+// demo.addEventListener("readystatechange", () => {
+//   if (demo.readyState === 4) {
+//     if (demo.status === 200) {
+//       const data = JSON.parse(demo.responseText);
+//       console.log(data);
+//     } else {
+//       console.error("Error:", demo.status, demo.statusText);
+//     }
+//   }
+// });
+
+// demo.open("GET", "index.json");
+// demo.send();
+
+////// CALL Back Hell ///////////////
+// const getTodos = (resource, callback) => {
+//   const request = new XMLHttpRequest();
+
+//   request.addEventListener("readystatechange", () => {
+//     // console.log(request, request.readyState);
+
+//     if (request.readyState === 4 && request.status === 200) {
+//       const data = JSON.parse(request.responseText);
+//       callback(undefined, data);
+//       //   console.log(request, request.responseText);
+//     } else if (request.readyState === 4) {
+//       callback("couldnt fetch data", undefined);
+//       //   console.log("Could not fetch the data");
+//     }
+//   });
+
+//   //   request.open("GET", "https://jsonplaceholder.typicode.com/todos/");
+//   request.open("GET", resource);
+//   request.send();
+// };
+
+// getTodos("index.json", (err, data) => {
+//   console.log("Callback fired");
+//   console.log(data);
+
+//   getTodos("index1.json", (err, data) => {
+//     console.log(data);
+//     //   console.log(err, data);
+//     //   if (err) {
+//     //     console.log(err);
+//     //   } else {
+//     //     console.log(data);
+//     //   }
+//   });
+// });
+
+// ///// PROMISES /////////
+
+// const getsomething = () => {
+//   return new Promise((resolve, reject) => {
+//     // fetch something
+//     resolve("RESOLVE DATA");
+//     // reject("ERROR OCCURED");
+//   });
+// };
+
+// // 1st Method
+
+// // getsomething().then(
+// //   (data) => {
+// //     console.log(data);
+// //   },
+// //   (err) => {
+// //     console.log(err);
+// //   }
+// // );
+
+// // 2nd Method
+
+// getsomething()
+//   .then((data) => {
+//     console.log(data);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
+
+//// Creating a HTTP Request through Promises ////
+
+const getTodos = (resource) => {
+  return new Promise((resolve, reject) => {
+    const request = new XMLHttpRequest();
+
+    request.addEventListener("readystatechange", () => {
+      if (request.readyState === 4 && request.status === 200) {
+        const data = JSON.parse(request.responseText);
+        resolve(data); // Resolve with the actual data
+      } else if (request.readyState === 4) {
+        reject(`Error getting resource: ${request.status}`); // Include status code in the error
+      }
+    });
+
+    request.open("GET", resource);
+    request.send();
   });
-
-  request.open("GET", "https://jsonplaceholder.typicode.com/todos/");
-  request.send();
 };
 
-console.log(1);
-console.log(2);
-
-getTodos((err, data) => {
-  console.log("Callback fired");
-  //   console.log(err, data);
-  if (err) {
-    console.log(err);
-  } else {
-    console.log(data);
-  }
-});
-
-console.log(3);
-console.log(4);
+getTodos("index1.json")
+  .then((data) => {
+    console.log("Promise resolved", data);
+  })
+  .catch((err) => {
+    console.log("Error occurred", err);
+  });
