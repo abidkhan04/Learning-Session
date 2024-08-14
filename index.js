@@ -114,9 +114,22 @@ const getTodos = (resource) => {
   });
 };
 
-getTodos("index1.json")
+// Chaining Promises
+getTodos("index.json")
   .then((data) => {
-    console.log("Promise resolved", data);
+    console.log("Promise 1 resolved", data);
+    return getTodos("index1.json");
+  })
+  .then((data) => {
+    console.log("Promise 2 resolved", data);
+    return getTodos("index.json", data);
+  })
+  .then((data) => {
+    console.log("Promise 3 resolved", data);
+    return getTodos("index1.json", data);
+  })
+  .then((data) => {
+    console.log("Promise 4 resolved", data);
   })
   .catch((err) => {
     console.log("Error occurred", err);
