@@ -1,45 +1,24 @@
-// // // Local data in Local Storage
+const userone = {
+  username: "Anna",
+  email: "anna@gmail.com",
 
-// localStorage.setItem("name", "Abid");
-// localStorage.setItem("age", "26");
+  login() {
+    console.log("User has logged in");
+  },
 
-// // // get data from local storage
+  logout() {
+    console.log("User has logged out");
+  },
+};
+const usertwo = {
+  username: "Anna",
+  email: "anna@gmail.com",
 
-// let name = localStorage.getItem("name");
-// let age = localStorage.getItem("age");
+  login() {
+    console.log("User has logged in");
+  },
 
-// console.log(name, age);
-
-// // Upadating data
-
-// localStorage.setItem("name", "luigi");
-
-// // Setting the value of age by dot method
-// localStorage.age = "40";
-
-// name1 = localStorage.getItem("name1");
-// age = localStorage.getItem("age");
-// console.log(name1, age);
-
-// localStorage.removeItem("name1");
-
-// name1 = localStorage.getItem("name1");
-
-// console.log(name1);
-
-// // Deleing a single item from a localstorage
-// localStorage.clear();
-
-// Converting An array into json data
-
-const todos = [
-  { text: "play Football", author: "Abid" },
-  { text: "play tennis", author: "Adil" },
-  { text: "play pc games", author: "shonni" },
-];
-
-localStorage.setItem("todos", JSON.stringify(todos));
-
-const stored = localStorage.getItem("todos");
-
-console.log(JSON.parse(stored));
+  logout() {
+    console.log("User has logged out");
+  },
+};
