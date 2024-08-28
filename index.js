@@ -3,11 +3,11 @@ const userone = {
   email: "anna@gmail.com",
 
   login() {
-    console.log("User has logged in");
+    console.log("UserONe has logged in");
   },
 
   logout() {
-    console.log("User has logged out");
+    console.log("UserONe has logged out");
   },
 };
 const usertwo = {
@@ -15,10 +15,16 @@ const usertwo = {
   email: "anna@gmail.com",
 
   login() {
-    console.log("User has logged in");
+    console.log("UserTwo has logged in");
   },
 
   logout() {
-    console.log("User has logged out");
+    console.log("UserTwo has logged out");
   },
 };
+
+// Its quite messy when we are creating more objects as
+// the code is difficult to maintain
+console.log(userone.username, userone.email);
+userone.login();
+usertwo.logout();
