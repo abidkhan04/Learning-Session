@@ -53,12 +53,32 @@ class user {
   }
 }
 
+class admin extends user {
+  deleteUser(user) {
+    users = users.filter((u) => {
+      return u.username !== user.username;
+    });
+  }
+}
+
 const userone = new user("mario", "lane12", "0347");
 const usertwo = new user("Anna", "lane13", "0347");
 const userthree = new user("Abid", "lane14", "1234");
+const userfour = new user("Robeel", "lane51", "2345");
+const userfive = new user("Baitullah", "lane51", "2345");
+const usersix = new admin("Meerai", "lane51", "2345");
 
-console.log(userone, usertwo, userthree);
+console.log(userone, usertwo, userthree, userfour, usersix);
 
-userone.login().incscore().incscore().logout();
-usertwo.login().incscore().incscore().incscore().logout();
-userthree.login().incscore().incscore().incscore().incscore().logout();
+let users = [userone, usertwo, userthree, userfour, userfive, usersix];
+console.log(users);
+
+usersix.deleteUser(usertwo);
+console.log(users);
+
+// userone.login().incscore().incscore().logout();
+// usertwo.login().incscore().incscore().incscore().logout();
+// userthree.login().incscore().incscore().incscore().incscore().logout();
+// userfour.login().incscore().incscore().incscore();
+// userfive.login().incscore().incscore().incscore();
+// usersix.login().incscore().incscore().incscore();
